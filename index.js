@@ -5,17 +5,15 @@ document.addEventListener("DOMContentLoaded", () => {
     const newJokeButton = document.getElementById('new-joke');
 
     async function fetchJoke() {
-        const response = fetch('https://api.chucknorris.io/jokes/random');
-        const joke = response.json();
+        const response = await fetch('https://api.chucknorris.io/jokes/random');
+        const joke = await response.json();
         return joke;
     }
 
     function displayJoke(joke) {
         const jokeItem = document.createElement('div');
         jokeItem.classList.add('joke');
-        jokeItem.innerHTML = `
-            <p>${joke.value}</p>
-        `;
+        jokeItem.innerHTML = `<p>${joke.value}</p>`;
         jokeList.appendChild(jokeItem);
     }
 
