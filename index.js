@@ -5,17 +5,15 @@ document.addEventListener("DOMContentLoaded", () => {
     const searchInput = document.getElementById('search');
     const toggleThemeButton = document.getElementById('toggle-theme');
     const newJokeButton = document.getElementById('new-joke');
-//add api website for chuck norris jokes
-    async function fetchJoke() {
-        const response = await fetch('https://api.chucknorris.io/jokes/random');
-        const joke = await response.json();
-        return joke;
-    }
-
+//add way to get api using fetch
+    function fetchJoke() {
+        return fetch('https://api.chucknorris.io/jokes/random')
+            .then(response => response.json());
+}
+//store the joke somewhere
     function displayJoke(joke) {
-        const jokeItem = document.createElement('div');
-        jokeItem.classList.add('joke');
-        jokeItem.innerHTML = `<p>${joke.value}</p>`;
+        const jokeItem = document.createElement('p');
+        jokeItem.textContent = joke.value;
         jokeList.appendChild(jokeItem);
     }
 
