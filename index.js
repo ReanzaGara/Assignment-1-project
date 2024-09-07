@@ -16,14 +16,13 @@ document.addEventListener("DOMContentLoaded", () => {
         jokeItem.textContent = joke.value;
         jokeList.appendChild(jokeItem);
     }
-
-    async function getNewJoke() {
-        const joke = await fetchJoke();
-        displayJoke(joke);
+//make it so you can get new jokes
+    function getNewJoke() {
+        fetchJoke().then(function(joke) {
+            displayJoke(joke);
+        });
     }
-
     newJokeButton.addEventListener('click', getNewJoke);
-
     getNewJoke();
 
     toggleThemeButton.addEventListener('click', () => {
