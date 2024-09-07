@@ -1,5 +1,11 @@
+//Requirements for project: 
+//have HTML, CSS, JS
+//single page
+//3 eventListeners
+//use of one of the array methods (map, forEach, filter)
+
 //create entry to DOM
-//add variables to call from html
+//add variables to call from html using id
 document.addEventListener("DOMContentLoaded", () => {
     const jokeList = document.getElementById('joke-list');
     const searchInput = document.getElementById('search');
@@ -17,6 +23,7 @@ document.addEventListener("DOMContentLoaded", () => {
         jokeList.appendChild(jokeItem);
     }
 //make it so you can get new jokes
+//add another eventListener
     function getNewJoke() {
         fetchJoke().then(function(joke) {
             displayJoke(joke);
@@ -24,11 +31,12 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     newJokeButton.addEventListener('click', getNewJoke);
     getNewJoke();
-
+//make darkmode avaliable with eventListener
     toggleThemeButton.addEventListener('click', () => {
         document.body.classList.toggle('dark-mode');
     });
-
+//make search by term avaliable
+//make it all lowercase
     searchInput.addEventListener('input', () => {
         const searchTerm = searchInput.value.toLowerCase();
         const jokes = Array.from(document.querySelectorAll('.joke p'));
@@ -40,5 +48,4 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         });
     });
-    
 });
