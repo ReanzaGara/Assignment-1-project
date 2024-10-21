@@ -18,8 +18,13 @@ document.addEventListener("DOMContentLoaded", () => {
 }
 //store the joke somewhere
     function displayJoke(joke) {
-        const jokeItem = document.createElement('p');
-        jokeItem.textContent = joke.value;
+        const jokeItem = document.createElement('div');
+        jokeItem.classList.add('joke');
+        
+        const jokeText = document.createElement('p');
+        jokeText.textContent = joke.value;
+
+        jokeItem.appendChild(jokeText);
         jokeList.appendChild(jokeItem);
     }
 //make it so you can get new jokes
@@ -39,8 +44,7 @@ document.addEventListener("DOMContentLoaded", () => {
 //make it all lowercase
     searchInput.addEventListener('input', () => {
         const searchTerm = searchInput.value.toLowerCase();
-        const jokes = Array.from(document.querySelectorAll('.joke p;'));
-
+        const jokes = Array.from(document.querySelectorAll('#joke-list .joke p'));
         jokes.forEach(joke => {
             if(joke.textContent.toLowerCase().includes(searchTerm)) {
                 joke.parentElement.style.display = 'block'; //show if it matches the search
