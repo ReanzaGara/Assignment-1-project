@@ -37,5 +37,16 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 //make search by term avaliable
 //make it all lowercase
-    
+    searchInput.addEventListener('input', () => {
+        const searchTerm = searchInput.value.toLowerCase();
+        const jokes = Array.from(document.querySelectorAll('.joke p;'));
+
+        jokes.forEach(joke => {
+            if(joke.textContent.toLowerCase().includes(searchTerm)) {
+                joke.parentElement.style.display = 'block'; //show if it matches the search
+            } else {
+                joke.parentElement.style.display = 'none'; //hide if it does not match the search
+            }
+        });
+    });
 });
